@@ -15,5 +15,8 @@
     "bugs": {
         "url": "https://github.com/m00nlygreat/dotmemo/issues"
     },
-    "homepage": "https://github.com/m00nlygreat/dotmemo#readme"
+    "homepage": "https://github.com/m00nlygreat/dotmemo#readme",
+    "scripts": {
+        "start": "node app.js"
+    }
 }
