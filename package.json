@@ -1,8 +1,19 @@
 {
     "name": "dotmemo",
-    "description": "simple web memo",
-    "version": "0.1",
-    "engines": {
-        "node": "12.16.x"
-    }
+    "version": "1.0.0",
+    "description": "a simple web memo",
+    "main": "app.js",
+    "scripts": {
+        "test": "none"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/m00nlygreat/dotmemo.git"
+    },
+    "author": "m00nlygreat",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/m00nlygreat/dotmemo/issues"
+    },
+    "homepage": "https://github.com/m00nlygreat/dotmemo#readme"
 }
