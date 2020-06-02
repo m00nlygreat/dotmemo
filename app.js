@@ -52,6 +52,7 @@ var app = http.createServer(function(request, response) {
             {response.end(fs.readFileSync(__dirname + url));return response;writeHead(200);}
 
 });
+const PORT = process.env.PORT
 
 
-app.listen(80);
+app.listen(PORT);
