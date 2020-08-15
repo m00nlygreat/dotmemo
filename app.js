@@ -2,54 +2,71 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
+// var async = require('async');
+var mysql = require('mysql2');
 
-var app = http.createServer(function(request, response) {
-            var _url = request.url;
-            var pathname = url.parse(_url, true).pathname;
+var db = mysql.createConnection({
+    host: 'ao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'bm9rie6dl9gd3hn4',
+    password: 'lp3alh1o25sz79ct',
+    database: 'nkyplzz18tmurkav'
+});
 
-            var htmlHeader = fs.readFileSync('main.html', 'utf8');
-            var htmlFooter = `</ul></body></html>`;
+db.connect();
 
-            // 메인페이지에 접근하는 경우
-            if (_url == '/') {
-                var dotList = fs.readdirSync('./dots');
-                var dotListHTML = '';
-                dotList.forEach(dotID => {
-                            dotListHTML += `<li>${fs.readFileSync(`./dots/${dotID}`, 'utf8')}</li>`
-                  });
+var app = http.createServer(function (request, response) {
+    // 두개중 하나는 안써도 될 것 같은데..
+    var _url = request.url;
+    var pathname = url.parse(_url, true).pathname;
 
-                var HTML = htmlHeader + dotListHTML + htmlFooter;
+    var htmlHeader = fs.readFileSync('main.html', 'utf8');
+    var htmlFooter = `</ul></body></html>`;
 
-                response.end(HTML);
-                return response.writeHead(200);
-                }
+    // 메인페이지에 접근하는 경우
+    if (pathname == '/') {
 
-            if (pathname == '/write') {
+        var dotListHTML = '';
 
-                var body = '';
-                request.on('data', function (data) {
-                    body = body + data;
-                });
-                request.on('end', function () {
-                    var ts = new Date();
-                    var dotID = ts.toLocaleString().replace(":","_");
-                    var dotDesc = qs.parse(body).dot_description;
+        db.query('SELECT * FROM `default`', function (err, result) {
+            result.forEach(item => {
+                dotListHTML += `<li>${item.dot}</li>`;
+            });
+            var HTML = htmlHeader + dotListHTML + htmlFooter;
+            response.end(HTML);
+            return response.writeHead(200);
+        })
 
-                    fs.writeFile(`./dots/${dotID}`,dotDesc, 'utf8', function(err){
-                        console.log(err);
-                        response.writeHead(302, { 'Location' : '/' });
-                        response.end();
-                    })
-                    })
 
-                return;
 
-            }
+    }
 
-                if (_url == '/favicon.ico') {return response.writeHead(404);}
+    if (pathname == '/write') {
 
-            // 아무 것에도 해당하지 않는 경우, 파일을 response
-            {response.end(fs.readFileSync(__dirname + url));return response;writeHead(200);}
+        var body = '';
+        request.on('data', function (data) {
+            body = body + data;
+        });
+        request.on('end', function () {
+
+
+            var dotDesc = qs.parse(body).dot_description;
+            // connection.query(`INSERT INTO \`default\`(dot, date) VALUES ('${dotDesc}', NOW())`);
+
+            db.query(`INSERT INTO \`default\`(dot, date) VALUES ('${dotDesc}', NOW())`, function(err, result){
+                response.writeHead(302, { 'Location': '/' });
+                response.end();
+            });
+
+        })
+
+        return;
+
+    }
+
+    if (_url == '/favicon.ico') { return response.writeHead(404); }
+
+    // 아무 것에도 해당하지 않는 경우, 파일을 response
+    // { response.end(fs.readFileSync(__dirname + url)); return response; writeHead(200); }
 
 });
 const PORT = process.env.PORT
