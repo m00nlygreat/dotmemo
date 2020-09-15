@@ -16,7 +16,7 @@ var db = mysql.createConnection({
 });
 
 db.connect();
-
+// app start
 var app = http.createServer(function (request, response) {
     // 두개중 하나는 안써도 될 것 같은데..
     var _url = request.url;

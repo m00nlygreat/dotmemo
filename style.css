@@ -1,3 +1,8 @@
 a {
     text-decoration: none;
 }
+
+li .deleteRow {
+    font-weight: 900;
+    font-size: 1.5em;
+}
