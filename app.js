@@ -11,7 +11,7 @@ console.log(PASS);
 var db = mysql.createConnection({
     host: 'ao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     user: 'bm9rie6dl9gd3hn4',
-    password: 'lp3alh1o25sz79ct',
+    password: PASS,
     database: 'nkyplzz18tmurkav'
 });
 
