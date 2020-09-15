@@ -26,17 +26,6 @@ var app = http.createServer(function (request, response) {
     var htmlHeader = template.build(table);
     var htmlFooter = `</ul></body></html>`;
 
-
-    if (pathname == '/favicon.ico') {
-        response.end(fs.readFileSync(__dirname + '/favicon.ico'));
-        return response.writeHead(200);
-        }
-    if (pathname == '/style.css') {
-        response.end(fs.readFileSync(__dirname + '/style.css'));
-        return response.writeHead(200);
-    }
-
-
     if (pathname == '/write') {
 
         var body = '';
@@ -75,7 +64,7 @@ var app = http.createServer(function (request, response) {
         console.log(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \` ${tableName}\``);
 
         db.query(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \`${tableName}\``, function (err, result) {
-            if (err) { console.log(err); }
+            if(err){console.log(err);}
             response.writeHead(302, { 'Location': `/` });
             return response.end();
         });
@@ -83,6 +72,8 @@ var app = http.createServer(function (request, response) {
 
 
     }
+
+    if (pathname == '/favicon.ico') { return response.writeHead(404); }
 
 
 
@@ -99,7 +90,7 @@ var app = http.createServer(function (request, response) {
                         htmlHeader = htmlHeader.replace(/value=0/, 'value=1');
                     }
                 }
-                try { result.forEach(item => { dotListHTML += `<li>${item.dot}<a href=/empty?id=${table}>.</a></li>`; }); }
+                try { result.forEach(item => { dotListHTML += `<li>${item.dot}</li>`; }); }
                 catch { dotListHTML = `<p>항목이 없습니다.</p>` }
 
                 response.end(htmlHeader + dotListHTML + htmlFooter);

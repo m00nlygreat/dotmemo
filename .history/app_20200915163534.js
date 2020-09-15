@@ -27,10 +27,7 @@ var app = http.createServer(function (request, response) {
     var htmlFooter = `</ul></body></html>`;
 
 
-    if (pathname == '/favicon.ico') {
-        response.end(fs.readFileSync(__dirname + '/favicon.ico'));
-        return response.writeHead(200);
-        }
+    if (pathname == '/favicon.ico') { return response.writeHead(404); }
     if (pathname == '/style.css') {
         response.end(fs.readFileSync(__dirname + '/style.css'));
         return response.writeHead(200);

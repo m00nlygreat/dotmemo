@@ -6,13 +6,11 @@ var template = require('./header.js');
 // var async = require('async');
 var mysql = require('mysql2');
 
-const PASS = process.env.PASS;
-
 var db = mysql.createConnection({
-    host: 'ao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    user: 'bm9rie6dl9gd3hn4',
-    password: PASS,
-    database: 'nkyplzz18tmurkav'
+    host: 'localhost',
+    user: 'root',
+    password: 'm00nlygreat',
+    database: 'dot'
 });
 
 db.connect();
@@ -27,14 +25,13 @@ var app = http.createServer(function (request, response) {
     var htmlFooter = `</ul></body></html>`;
 
 
-    if (pathname == '/favicon.ico') {
-        response.end(fs.readFileSync(__dirname + '/favicon.ico'));
-        return response.writeHead(200);
-        }
-    if (pathname == '/style.css') {
-        response.end(fs.readFileSync(__dirname + '/style.css'));
-        return response.writeHead(200);
-    }
+    if (pathname == '/favicon.ico') { return response.writeHead(404); }
+    if (pathname == '/style.css') { 
+        response.end(fs.readFileSync(__dirname + url));
+        return response.writeHead(200); 
+
+    
+}
 
 
     if (pathname == '/write') {
@@ -75,7 +72,7 @@ var app = http.createServer(function (request, response) {
         console.log(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \` ${tableName}\``);
 
         db.query(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \`${tableName}\``, function (err, result) {
-            if (err) { console.log(err); }
+            if(err){console.log(err);}
             response.writeHead(302, { 'Location': `/` });
             return response.end();
         });
@@ -114,4 +111,12 @@ var app = http.createServer(function (request, response) {
 const PORT = process.env.PORT
 
 
-app.listen(PORT);
+app.listen(80);
+
+/*
+CREATE TABLE `default`(
+    id int(11) NOT NULL AUTO_INCREMENT,
+    dot TEXT NOT NULL,
+    date DATETIME,
+    PRIMARY KEY (id));
+*/
