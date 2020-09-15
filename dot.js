@@ -28,7 +28,7 @@ var app = http.createServer(function (request, response) {
     if (pathname == '/favicon.ico') {
         response.end(fs.readFileSync(__dirname + '/favicon.ico'));
         return response.writeHead(200);
-        }
+    }
     if (pathname == '/style.css') {
         response.end(fs.readFileSync(__dirname + '/style.css'));
         return response.writeHead(200);
@@ -89,6 +89,9 @@ var app = http.createServer(function (request, response) {
     if (pathname != '/write') {
         if (pathname != '/empty') {
 
+            var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+            var regex = new RegExp(expression);
+
             var dotListHTML = '';
 
             db.query(`SELECT * FROM \`${table}\``, function (err, result) {
@@ -97,7 +100,15 @@ var app = http.createServer(function (request, response) {
                         htmlHeader = htmlHeader.replace(/value=0/, 'value=1');
                     }
                 }
-                try { result.forEach(item => { dotListHTML += `<li>${item.dot}<a href=/empty?id=${table}>.</a></li>`; }); }
+                try {
+                    result.forEach(item => {
+                        if (item.dot.match(regex)) {
+                            dotListHTML += `<li><a href="${item.dot}">${item.dot}</a><a href=/empty?id=${table}>.</a></li>`;
+                        } else {
+                            dotListHTML += `<li>${item.dot}<a href=/empty?id=${table}>.</a></li>`;
+                        }
+                    });
+                }
                 catch { dotListHTML = `<p>항목이 없습니다.</p>` }
 
                 response.end(htmlHeader + dotListHTML + htmlFooter);
