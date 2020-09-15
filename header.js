@@ -15,7 +15,7 @@ module.exports = {
         <form action="write" method="POST" style="margin-top:1em;">
             <input type="hidden" name="table" value="${table}"></input>
             <input type="hidden" name="createYN" value=0></input>
-            <input type="text" name="dot_description" placeholder="to ${table} board"></input>
+            <input type="text" name="dot_description" placeholder="to ${table} board" autofocus></input>
             <input type="submit">
         </form>
         <ul>`;
