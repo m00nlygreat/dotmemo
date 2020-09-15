@@ -94,6 +94,7 @@ var app = http.createServer(function (request, response) {
             var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
             var regex = new RegExp(expression);
 
+
             var dotListHTML = '';
 
             db.query(`SELECT * FROM \`${table}\``, function (err, result) {
@@ -103,11 +104,12 @@ var app = http.createServer(function (request, response) {
                     }
                 }
                 try {
+                    var dotDeleteHTML = `<span class="deleteRow"><a href=/empty?id=${table}>.</a></span>`
                     result.forEach(item => {
                         if (item.dot.match(regex)) {
-                            dotListHTML += `<li><a href="${item.dot}">${item.dot}</a><a href=/empty?id=${table}>.</a></li>`;
+                            dotListHTML += `<li><a href="${item.dot}">${item.dot}</a>${dotDeleteHTML}</li>`;
                         } else {
-                            dotListHTML += `<li>${item.dot}<a href=/empty?id=${table}>.</a></li>`;
+                            dotListHTML += `<li>${item.dot}${dotDeleteHTML}</li>`;
                         }
                     });
                 }
