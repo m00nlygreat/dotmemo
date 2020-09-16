@@ -135,9 +135,23 @@ const PORT = process.env.PORT
 app.listen(80);
 
 /*
+CREATE DATABASE `dot`
+  CHARACTER SET = 'utf8';
+
 CREATE TABLE `default`(
-    id int(11) NOT NULL AUTO_INCREMENT,
-    dot TEXT NOT NULL,
-    date DATETIME,
-    PRIMARY KEY (id));
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`dot` TEXT NOT NULL,
+`date` DATETIME,
+PRIMARY KEY (`id`));
+
+C:\Windows\System32\cmd.exe /k " "C:\Program Files\MariaDB 10.5\bin\mysql.exe" "--defaults-file=C:\Program Files\MariaDB 10.5\data\my.ini" -uroot -p"
+
+
+mysql -hao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com -ubm9rie6dl9gd3hn4 -plp3alh1o25sz79ct nkyplzz18tmurkav
+
+SELECT table_schema "nkyplzz18tmurkav",
+SUM(data_length + index_length) / 1024 / 1024 "Size(MB)"
+FROM information_schema.TABLES
+GROUP BY table_schema;
+
 */
