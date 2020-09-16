@@ -69,15 +69,22 @@ var app = http.createServer(function (request, response) {
 
     if (pathname == '/empty') {
         var queryData = url.parse(_url, true).query;
-
         var tableName = queryData.id;
-        console.log(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \` ${tableName}\``);
+        
+        if (queryData.row) {
+            db.query(`DELETE FROM \`${tableName}\` WHERE id=${queryData.row}`, function (err, result) {
+                if (err) { console.log(err); }
+                response.writeHead(302, { 'Location': `/${(tableName == 'default' ? '' : tableName)}` });
+                return response.end();
+            });
+        } else { 
+
 
         db.query(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \`${tableName}\``, function (err, result) {
             if (err) { console.log(err); }
             response.writeHead(302, { 'Location': `/` });
             return response.end();
-        });
+        });}
 
 
 
@@ -103,12 +110,11 @@ var app = http.createServer(function (request, response) {
                     }
                 }
                 try {
-                    var dotDeleteHTML = `<span class="deleteRow"><a href=/empty?id=${table}>.</a></span>`
-                    result.forEach(item => {
+                    result.forEach((item) => {
                         if (item.dot.match(regex)) {
-                            dotListHTML += `<li><a href="${item.dot}">${item.dot}</a>${dotDeleteHTML}</li>`;
+                            dotListHTML += `<li><a href="${item.dot}">${item.dot}</a><span class="deleteRow"><a href=/empty?id=${table}&row=${item.id}>.</a></span></li>`;
                         } else {
-                            dotListHTML += `<li>${item.dot}${dotDeleteHTML}</li>`;
+                            dotListHTML += `<li>${item.dot}<span class="deleteRow"><a href=/empty?id=${table}&row=${item.id}>.</a></span></li>`;
                         }
                     });
                 }
