@@ -7,6 +7,8 @@ module.exports = {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel= "stylesheet" type="text/css" href="/style.css">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <title>dot${(table == 'default' ? '' : ' - ' + table)}</title>
     </head>
     
