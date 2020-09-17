@@ -24,17 +24,29 @@ var app = http.createServer(function (request, response) {
 
     var htmlHeader = template.build(table);
     var htmlFooter = `</ul></body></html>`;
-
-
-    if (pathname == '/favicon.ico') {
-        response.end(fs.readFileSync(__dirname + '/favicon.ico'));
+    var whiteList = ["/apple-icon-57x57.png",
+        "/apple-icon-60x60.png",
+        "/apple-icon-72x72.png",
+        "/apple-icon-76x76.png",
+        "/apple-icon-114x114.png",
+        "/apple-icon-120x120.png",
+        "/apple-icon-144x144.png",
+        "/apple-icon-152x152.png",
+        "/apple-icon-180x180.png",
+        "/android-icon-192x192.png",
+        "/favicon-32x32.png",
+        "/favicon-96x96.png",
+        "/favicon-16x16.png",
+        "/ms-icon-144x144.png",
+        "/style.css",
+        "/favicon.ico"];
+    
+    console.log(pathname);
+    
+    if (whiteList.includes(pathname)) {
+        response.end(fs.readFileSync(__dirname + pathname));
         return response.writeHead(200);
     }
-    if (pathname == '/style.css') {
-        response.end(fs.readFileSync(__dirname + '/style.css'));
-        return response.writeHead(200);
-    }
-
 
     if (pathname == '/write') {
 
@@ -70,21 +82,22 @@ var app = http.createServer(function (request, response) {
     if (pathname == '/empty') {
         var queryData = url.parse(_url, true).query;
         var tableName = queryData.id;
-        
+
         if (queryData.row) {
             db.query(`DELETE FROM \`${tableName}\` WHERE id=${queryData.row}`, function (err, result) {
                 if (err) { console.log(err); }
                 response.writeHead(302, { 'Location': `/${(tableName == 'default' ? '' : tableName)}` });
                 return response.end();
             });
-        } else { 
+        } else {
 
 
-        db.query(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \`${tableName}\``, function (err, result) {
-            if (err) { console.log(err); }
-            response.writeHead(302, { 'Location': `/` });
-            return response.end();
-        });}
+            db.query(`${(tableName == 'default' ? 'TRUNCATE' : 'DROP TABLE')} \`${tableName}\``, function (err, result) {
+                if (err) { console.log(err); }
+                response.writeHead(302, { 'Location': `/` });
+                return response.end();
+            });
+        }
 
 
 
