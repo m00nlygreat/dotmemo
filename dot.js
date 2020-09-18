@@ -24,23 +24,23 @@ var app = http.createServer(function (request, response) {
 
     var htmlHeader = template.build(table);
     var htmlFooter = `</ul></body></html>`;
-    var whiteList = ["/apple-icon-57x57.png",
-        "/apple-icon-60x60.png",
-        "/apple-icon-72x72.png",
-        "/apple-icon-76x76.png",
-        "/apple-icon-114x114.png",
-        "/apple-icon-120x120.png",
-        "/apple-icon-144x144.png",
-        "/apple-icon-152x152.png",
-        "/apple-icon-180x180.png",
-        "/android-icon-192x192.png",
-        "/favicon-32x32.png",
-        "/favicon-96x96.png",
-        "/favicon-16x16.png",
-        "/ms-icon-144x144.png",
-        "/style.css",
-        "/favicon.ico"];
-    
+    var whiteList = ["/icon/apple-icon-57x57.png",
+        "/icon/apple-icon-60x60.png",
+        "/icon/apple-icon-72x72.png",
+        "/icon/apple-icon-76x76.png",
+        "/icon/apple-icon-114x114.png",
+        "/icon/apple-icon-120x120.png",
+        "/icon/apple-icon-144x144.png",
+        "/icon/apple-icon-152x152.png",
+        "/icon/apple-icon-180x180.png",
+        "/icon/android-icon-192x192.png",
+        "/icon/favicon-32x32.png",
+        "/icon/favicon-96x96.png",
+        "/icon/favicon-16x16.png",
+        "/icon/ms-icon-144x144.png",
+        "/icon/favicon.ico",
+    "/style.css"];
+
     console.log(pathname);
     
     if (whiteList.includes(pathname)) {
