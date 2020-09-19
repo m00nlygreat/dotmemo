@@ -50,7 +50,8 @@ article {
 
 h1 {
   filter: blur(3px);
-  display: inline;
+  display: inline-block;
+  margin-bottom: 15px;
 }
 
 .dot {
