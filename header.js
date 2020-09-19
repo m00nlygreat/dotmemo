@@ -27,15 +27,17 @@ module.exports = {
         </head>
         
         <body>
+            <div class="wrapwrap">
             <div class="flexWrap">
                 <header class="topWrapper">
                         <h1>${(table == 'default' ? 'dot' : table)}</h1>
                         <div class="dot offset"><a href=/empty?id=${table}></a></div>
-                        <form action="/write" method="POST">
+                        <form action="write" method="POST">
                             <div class="formWrapper">
                                 <input type="hidden" name="table" value="${table}"></input>
                                 <input type="hidden" name="createYN" value=0></input>
-                                <input type="text" name="dot_description" autocomplete="off" placeholder="to ${table} board" class="dotdesc" autofocus></input>
+                                <input type="text" name="dot_description" autocomplete="off" placeholder="to ${table} board"
+                                    class="dotdesc" autofocus></input>
                                 <input type="submit" class="btn" value="put.">
                             </div>
                         </form>
