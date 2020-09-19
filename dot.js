@@ -23,7 +23,7 @@ var app = http.createServer(function (request, response) {
     var table = (pathname == '/' ? 'default' : pathname.replace('/', ''));
 
     var htmlHeader = template.build(table);
-    var htmlFooter = `</ul></body></html>`;
+    var htmlFooter = `</ul></article></div></body></html>`;
     var whiteList = ["/icon/apple-icon-57x57.png",
         "/icon/apple-icon-60x60.png",
         "/icon/apple-icon-72x72.png",
@@ -125,10 +125,11 @@ var app = http.createServer(function (request, response) {
                 try {
                     result.forEach((item) => {
                         if (item.dot.match(regex)) {
-                            dotListHTML += `<li><a href="${item.dot}">${item.dot}</a><span class="deleteRow"><a href=/empty?id=${table}&row=${item.id}>.</a></span></li>`;
+                            dotListHTML += `<li><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent"><a href="${item.dot}">${item.dot}</a></span></li>`;
                         } else {
-                            dotListHTML += `<li>${item.dot}<span class="deleteRow"><a href=/empty?id=${table}&row=${item.id}>.</a></span></li>`;
+                            dotListHTML += `<li><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent">${item.dot}</span></li>`;
                         }
+
                     });
                 }
                 catch { dotListHTML = `<p>항목이 없습니다.</p>` }
