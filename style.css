@@ -2,7 +2,7 @@
   --defaultTexture: #ededed;
   --defaultShine: rgba(255, 255, 255, 0.9);
   --defaultShadow: rgba(0, 0, 0, 0.25);
-  --darkerShadow: rgba(0, 0, 0, 0.50);
+  --darkerShadow: rgba(0, 0, 0, 0.5);
   --defaultGrayForText: #808080;
   --defaultLinkColor: #555;
 }
@@ -39,7 +39,8 @@ input {
   flex-direction: column;
   height: 100%;
   margin: auto;
-  flex: 0 1 600px;
+  
+  max-width: 600px;
   box-shadow: 0px 0px 35px 0 var(--darkerShadow);
 }
 
@@ -56,11 +57,15 @@ input {
 }
 
 article {
+
   padding: 25px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   flex-grow: 1;
   background-color: var(--defaultTexture);
   height: 100%;
+  box-sizing: border-box;
+  min-width: 325px;
 }
 
 h1 {
@@ -93,9 +98,9 @@ h1 {
 .dotContent {
   padding: 0 15px;
   color: var(--defaultGrayForText);
+  word-break: break-all;
+  overflow: hidden;
 }
-
-
 
 ul {
   padding: 0px;
@@ -106,13 +111,12 @@ li {
   list-style-type: none;
   display: flex;
   margin-bottom: 10px;
-
 }
 
 .formWrapper {
   display: flex;
   width: 100%;
-  min-width: 360px;
+  min-width: 325px;
   justify-content: space-between;
 }
 
@@ -144,7 +148,7 @@ form .btn {
   margin-left: 15px;
   text-align: center;
   flex: 0 0 80px;
-  cursor:pointer
+  cursor: pointer;
 }
 
 a,
