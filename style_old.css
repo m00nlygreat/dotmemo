@@ -1,0 +1,166 @@
+:root {
+  --defaultTexture: #ededed;
+  --defaultShine: rgba(255, 255, 255, 0.9);
+  --defaultShadow: rgba(0, 0, 0, 0.25);
+  --darkerShadow: rgba(0, 0, 0, 0.5);
+  --defaultGrayForText: #808080;
+  --defaultLinkColor: #555;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: var(--defaultTexture);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+.wrapwrap {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background-color: #555;
+}
+
+.flexWrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: auto;
+  
+  max-width: 768px;
+  box-shadow: 0px 0px 35px 0 var(--darkerShadow);
+}
+
+.topWrapper {
+  box-sizing: border-box;
+  padding: 25px;
+  padding-bottom: 30px;
+  top: 0px;
+  position: sticky;
+  margin-top: 0px;
+  display: block;
+  background: var(--defaultTexture);
+  box-shadow: 0px 35px 20px -35px var(--defaultShadow);
+}
+
+article {
+
+  padding: 25px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-grow: 1;
+  background-color: var(--defaultTexture);
+  height: 100%;
+  box-sizing: border-box;
+  min-width: 325px;
+}
+
+h1 {
+  filter: blur(3px);
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.dot {
+  margin-top: 5px;
+  display: inline;
+}
+
+.offset {
+  position: relative;
+  top: 8px;
+  left: -3px;
+}
+
+.dot a {
+  width: 15px;
+  height: 15px;
+  top: 5px;
+  display: inline-block;
+  background: var(--defaultTexture);
+  box-shadow: -3px -3px 5px 0px #ffffff, 3px 3px 5px 0px var(--defaultShadow);
+  border-radius: 15px;
+}
+
+.dotContent {
+  padding: 0 15px;
+  color: var(--defaultGrayForText);
+  word-break: break-all;
+  overflow: hidden;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.formWrapper {
+  display: flex;
+  width: 100%;
+  min-width: 325px;
+  justify-content: space-between;
+}
+
+form .dotdesc {
+  box-shadow: inset -2px -2px 2px 0px rgba(255, 255, 255, 0.9),
+    inset 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 13px;
+  border: none;
+  height: 40px;
+  background: var(--defaultTexture);
+  padding: 0px 15px;
+  flex: 1 1 150px;
+}
+
+input:focus {
+  outline: none;
+}
+
+form .btn {
+  padding: 0px;
+  height: 40px;
+  background: var(--defaultTexture);
+  box-shadow: -7px -7px 15px 0px #ffffff, 7px 7px 15px 0px var(--defaultShadow);
+  border: none;
+  border-radius: 15px;
+  color: var(--defaultGrayForText);
+  font-weight: 600;
+  font-size: 12pt;
+  margin-left: 15px;
+  text-align: center;
+  flex: 0 0 80px;
+  cursor: pointer;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: var(--defaultLinkColor);
+  font-weight: 600;
+}
+
+li .deleteRow {
+  font-weight: 900;
+  font-size: 1.5em;
+}

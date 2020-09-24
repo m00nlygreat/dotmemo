@@ -1,0 +1,143 @@
+
+$defaultTexture: #ededed
+$defaultShine: rgba(255, 255, 255, 0.9)
+$defaultShadow: rgba(0, 0, 0, 0.25)
+$defaultGrayForText: #808080
+$defaultLinkColor: #555
+$darkerShadow: rgba(0,0,0,0.5)
+
+=upRelief
+    box-shadow: -7px -7px 15px 0px #ffffff, 7px 7px 15px 0px $defaultShadow
+
+=downRelief
+    box-shadow: inset -2px -2px 2px 0px rgba(255, 255, 255, 0.9), inset 2px 2px 2px 0px rgba(0, 0, 0, 0.15)
+
+html, body
+    margin: 0px
+    width: 0px
+    box-sizing: border-box
+    height: 100%
+    background-color: $defaultTexture
+
+::-webkit-scrollbar
+    display: none
+
+input
+    -webkit-appearance: none
+    -webkit-border-radius: 0
+    height: 40px
+    border-radius: 3px
+    &:focus
+        outline: none
+
+.wrapwrap
+    width: 100%
+    height: 100%
+    margin: 0
+    padding: 0
+    display: flex
+    background-color: $defaultLinkColor
+
+.flexWrap
+    display: flex
+    flex-direction: column
+    height: 100%
+    margin: auto
+    max-width: 768px
+    box-shadow: 0px 0px 35px 0 $darkerShadow
+
+.topWrapper
+    padding: 25px 25px 30px 25px
+    // box-sizing: border-box
+
+.formWrapper
+    display:flex
+    width: 100%
+    min-width: 325px
+    justify-content: space-between
+
+article
+    padding: 25px
+    overflow-y: scroll
+    overflow-x: hidden
+    flex-grow: 1
+    background-color: $defaultTexture
+    height: 100%
+    // box-sizing: border-box
+
+h1
+    filter: blur(3px)
+    display: inline-block
+    margin-bottom: 15px
+
+.dot
+    margin-top: 5px
+    display: inline
+    a
+        width: 15px
+        height: 15px
+        top: 5px
+        display: inline-block
+        background-color: $defaultTexture
+        border-radius: 15px
+        +upRelief
+
+.dotContent
+    padding: 0 15px
+    color: $defaultGrayForText
+    word-break: break-all
+    // overflow: hidden
+
+ul
+    padding: 0px
+    margin: 0px
+
+li
+    list-style-type: none
+    display: flex
+    margin-bottom: 10px
+
+
+
+.offset
+    position: relative
+    top: 8px
+    left: -3px
+
+form
+    .btn
+        +upRelief
+        padding: 0
+        background: $defaultTexture
+        border: none
+        border-radius: 15px
+        color: $defaultGrayForText
+        font:
+            weight: 600
+            size: 12pt
+        margin:
+            left: 15px
+        text-align: center
+        flex: 0 0 80px
+        cursor: pointer
+
+    .dotdesc
+        +downRelief
+        padding: 0 15px
+        border-radius: 15px
+        border: none
+        flex: 1 1 150px
+        background-color: $defaultTexture
+
+a
+    &:visited, &:hover, &:active
+        text-decoration: none
+        color: $defaultLinkColor
+        font-weight: 600
+
+li
+    .deleteRow
+        font:
+            weight: 900
+            size: 1.5em
+    
