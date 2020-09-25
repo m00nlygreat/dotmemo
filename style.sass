@@ -6,18 +6,32 @@ $defaultGrayForText: #808080
 $defaultLinkColor: #555
 $darkerShadow: rgba(0,0,0,0.5)
 
-=upRelief
-    box-shadow: -7px -7px 15px 0px #ffffff, 7px 7px 15px 0px $defaultShadow
+=upRelief($size: 1)
+    box-shadow: $size*-3px $size*-3px $size*7px 0px #ffffff, $size*3px $size*3px $size*7px 0px $defaultShadow
+    transition: .5s
+    &:hover
+        box-shadow: $size*-2px $size*-2px $size*5px 0px #ffffff, $size*1px $size*1px $size*5px 0px $defaultShadow
+    &:active
+        box-shadow: inset -1px -1px 1px 0px rgba(255, 255, 255, 0.9), inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15)
 
 =downRelief
-    box-shadow: inset -2px -2px 2px 0px rgba(255, 255, 255, 0.9), inset 2px 2px 2px 0px rgba(0, 0, 0, 0.15)
+    box-shadow: inset -2px -2px 3px 0px rgba(255, 255, 255, 0.9), inset 2px 2px 3px 0px rgba(0, 0, 0, 0.15)
+    transition: .5s
+    &:focus
+        box-shadow: inset -1px -1px 1px 0px rgba(255, 255, 255, 0.9), inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15)
+
+=roundy($roundness: 5px)
+    border:
+        radius: $roundness
 
 html, body
     margin: 0px
-    width: 0px
+    width: 100%
     box-sizing: border-box
     height: 100%
     background-color: $defaultTexture
+    text-shadow: 1px 1px white
+
 
 ::-webkit-scrollbar
     display: none
@@ -26,7 +40,7 @@ input
     -webkit-appearance: none
     -webkit-border-radius: 0
     height: 40px
-    border-radius: 3px
+    +roundy
     &:focus
         outline: none
 
@@ -49,9 +63,16 @@ input
 .topWrapper
     padding: 25px 25px 30px 25px
     // box-sizing: border-box
+    top: 0px
+    position: sticky
+    margin:
+        top: 0px
+    display: block
+    background: $defaultTexture
+    box-shadow: 0px 35px 20px -35px $defaultShadow
 
 .formWrapper
-    display:flex
+    display: flex
     width: 100%
     min-width: 325px
     justify-content: space-between
@@ -80,7 +101,7 @@ h1
         display: inline-block
         background-color: $defaultTexture
         border-radius: 15px
-        +upRelief
+        +upRelief(1)
 
 .dotContent
     padding: 0 15px
@@ -106,11 +127,10 @@ li
 
 form
     .btn
-        +upRelief
+        +upRelief(2)
         padding: 0
         background: $defaultTexture
         border: none
-        border-radius: 15px
         color: $defaultGrayForText
         font:
             weight: 600
@@ -124,13 +144,12 @@ form
     .dotdesc
         +downRelief
         padding: 0 15px
-        border-radius: 15px
         border: none
         flex: 1 1 150px
         background-color: $defaultTexture
 
 a
-    &:visited, &:hover, &:active
+    &, &:visited, &:hover, &:active
         text-decoration: none
         color: $defaultLinkColor
         font-weight: 600

@@ -23,7 +23,7 @@ var app = http.createServer(function (request, response) {
     var table = (pathname == '/' ? 'default' : pathname.replace('/', ''));
 
     var htmlHeader = template.build(table);
-    var htmlFooter = `</ul></article></div></body></html>`;
+    var htmlFooter = `</ul></article></div><script> </script></body></html>`;
     var whiteList = ["/icon/apple-icon-57x57.png",
         "/icon/apple-icon-60x60.png",
         "/icon/apple-icon-72x72.png",

@@ -36,8 +36,7 @@ module.exports = {
                             <div class="formWrapper">
                                 <input type="hidden" name="table" value="${table}"></input>
                                 <input type="hidden" name="createYN" value=0></input>
-                                <input type="text" name="dot_description" autocomplete="off" placeholder="to ${table} board"
-                                    class="dotdesc" autofocus></input>
+                                <input type="text" name="dot_description" autocomplete="off" placeholder="to ${table} board" class="dotdesc" autofocus></input>
                                 <input type="submit" class="btn" value="put.">
                             </div>
                         </form>
@@ -48,3 +47,13 @@ module.exports = {
     }
 }
 
+/*
+<li>
+    <span class="dot">
+        <a href="/empty?id=${table}&row=${item.id}">&nbsp;</a>
+        </span>
+    <span class="dotContent">${item.dot}
+       </span>
+</li>
+</ul></article></div></body></html>
+*/
