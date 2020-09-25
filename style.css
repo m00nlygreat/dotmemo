@@ -88,6 +88,13 @@ h1 {
           filter: blur(3px);
   display: inline-block;
   margin-bottom: 15px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+h1:hover {
+  -webkit-filter: blur(1.5px);
+          filter: blur(1.5px);
 }
 
 .dot {
