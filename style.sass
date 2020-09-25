@@ -12,13 +12,13 @@ $darkerShadow: rgba(0,0,0,0.5)
     &:hover
         box-shadow: $size*-2px $size*-2px $size*5px 0px #ffffff, $size*1px $size*1px $size*5px 0px $defaultShadow
     &:active
-        box-shadow: inset -1px -1px 1px 0px rgba(255, 255, 255, 0.9), inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15)
+        box-shadow: inset -1px -1px 1px 0px $defaultShine, inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15)
 
 =downRelief
-    box-shadow: inset -2px -2px 3px 0px rgba(255, 255, 255, 0.9), inset 2px 2px 3px 0px rgba(0, 0, 0, 0.15)
+    box-shadow: inset -2px -2px 3px 0px $defaultShine, inset 2px 2px 3px 0px rgba(0, 0, 0, 0.15)
     transition: .5s
     &:focus
-        box-shadow: inset -1px -1px 1px 0px rgba(255, 255, 255, 0.9), inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15)
+        box-shadow: inset -1px -1px 1px 0px $defaultShine, inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15)
 
 =roundy($roundness: 5px)
     border:
