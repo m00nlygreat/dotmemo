@@ -40,6 +40,7 @@ var app = http.createServer(function (request, response) {
         "/icon/favicon-16x16.png",
         "/icon/ms-icon-144x144.png",
         "/icon/favicon.ico",
+        "manifest.json",
     "/style.css"];
 
     console.log(pathname);
@@ -144,6 +145,7 @@ var app = http.createServer(function (request, response) {
 
 
 });
+
 
 const PORT = process.env.PORT
 app.listen(PORT);

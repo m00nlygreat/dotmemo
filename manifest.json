@@ -1,0 +1,25 @@
+{
+  "short_name": "Dot.",
+  "name": "Dot.",
+  "icons": [
+    {
+      "src": "./icon/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "./icon/apple-icon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "./icon/android-icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/default",
+  "background_color": "#FFF",
+  "theme_color": "#000",
+  "display": "fullscreen"
+}
