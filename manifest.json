@@ -1,6 +1,6 @@
 {
-  "short_name": "Dot.",
-  "name": "Dot.",
+  "short_name": "dot.",
+  "name": "dot.",
   "icons": [
     {
       "src": "./icon/favicon-16x16.png",
@@ -15,11 +15,11 @@
     {
       "src": "./icon/android-icon-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "256x256"
     }
   ],
-  "start_url": "/default",
+  "start_url": "/",
   "background_color": "#FFF",
   "theme_color": "##ededed",
-  "display": "fullscreen"
+  "display": "standalone"
 }
