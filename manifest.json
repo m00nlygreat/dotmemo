@@ -15,7 +15,8 @@
     {
       "src": "./icon/android-icon-192x192.png",
       "type": "image/png",
-      "sizes": "256x256"
+      "sizes": "256x256",
+      "purpose": "maskable"
     }
   ],
   "start_url": "/",
