@@ -133,7 +133,7 @@ var app = http.createServer(function (request, response) {
 
                     });
                 }
-                catch { dotListHTML = `<p>Nothing to show you</p><p>Put a dot to start a new board named ${table}</p>` }
+                catch (err) { dotListHTML = `<p>Error: ${err.errno}</p><p>Nothing to show you</p><p>Put a dot to start a new board named ${table}</p>` }
 
                 response.end(htmlHeader + dotListHTML + htmlFooter);
                 return response.writeHead(200);
@@ -144,7 +144,6 @@ var app = http.createServer(function (request, response) {
 
 
 });
-
 
 const PORT = process.env.PORT
 app.listen(PORT);
