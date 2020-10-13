@@ -32,8 +32,8 @@ module.exports = {
             <div class="wrapwrap">
             <div class="flexWrap">
                 <header class="topWrapper">
-                        <h1>${(table == 'default' ? 'dot' : table)}</h1>
-                        <div class="dot offset"><a href=/empty?id=${table}></a></div>
+                        <h1 class="title">${(table == 'default' ? 'dot' : table)}</h1>
+                        <div class="inlineDot"><a href=/empty?id=${table}>&nbsp;</a></div>
                         <form action="write" method="POST">
                             <div class="formWrapper">
                                 <input type="hidden" name="table" value="${table}"></input>
