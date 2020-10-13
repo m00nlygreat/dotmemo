@@ -12,6 +12,11 @@ html, body {
   display: none;
 }
 
+.md {
+  margin: 0px;
+  padding: 0px;
+}
+
 input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
@@ -83,7 +88,7 @@ article {
   height: 100%;
 }
 
-h1 {
+.title {
   -webkit-filter: blur(3px);
           filter: blur(3px);
   display: inline-block;
@@ -92,17 +97,50 @@ h1 {
   transition: .5s;
 }
 
-h1:hover {
+.title:hover {
   -webkit-filter: blur(1.5px);
           filter: blur(1.5px);
 }
 
-.dot {
-  margin-top: 5px;
+.inlineDot {
   display: inline;
+  position: relative;
+  top: 8px;
+  left: -3px;
+}
+
+.inlineDot a {
+  margin: auto;
+  width: 15px;
+  height: 15px;
+  top: 5px;
+  display: inline-block;
+  background-color: #ededed;
+  border-radius: 15px;
+  -webkit-box-shadow: -3px -3px 7px 0px #ffffff, 3px 3px 7px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: -3px -3px 7px 0px #ffffff, 3px 3px 7px 0px rgba(0, 0, 0, 0.25);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.inlineDot a:hover {
+  -webkit-box-shadow: -2px -2px 5px 0px #ffffff, 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: -2px -2px 5px 0px #ffffff, 1px 1px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.inlineDot a:active {
+  -webkit-box-shadow: inset -1px -1px 1px 0px rgba(255, 255, 255, 0.9), inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: inset -1px -1px 1px 0px rgba(255, 255, 255, 0.9), inset 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+.dot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .dot a {
+  margin: auto;
   width: 15px;
   height: 15px;
   top: 5px;
@@ -136,18 +174,12 @@ ul {
   margin: 0px;
 }
 
-li {
+li.dotLi {
   list-style-type: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 10px;
-}
-
-.offset {
-  position: relative;
-  top: 8px;
-  left: -3px;
 }
 
 form .btn {

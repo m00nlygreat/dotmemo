@@ -3,8 +3,8 @@ var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
 var template = require('./header.js');
-// var async = require('async');
 var mysql = require('mysql2');
+var parseMD = require('./parseMD.js');
 
 var db = mysql.createConnection({
     host: 'localhost',
@@ -40,7 +40,7 @@ var app = http.createServer(function (request, response) {
         "/icon/ms-icon-144x144.png",
         "/icon/favicon.ico",
         "/manifest.json",
-    "/style.css"];
+        "/style.css"];
 
     console.log(pathname);
     
@@ -111,7 +111,7 @@ var app = http.createServer(function (request, response) {
     if (pathname != '/write') {
         if (pathname != '/empty') {
 
-            var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+            var expression = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
             var regex = new RegExp(expression);
 
 
@@ -125,15 +125,14 @@ var app = http.createServer(function (request, response) {
                 }
                 try {
                     result.forEach((item) => {
-                        if (item.dot.match(regex)) {
-                            dotListHTML += `<li><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent"><a href="${item.dot}">${item.dot}</a></span></li>`;
-                        } else {
-                            dotListHTML += `<li><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent">${item.dot}</span></li>`;
-                        }
+
+                        dotListHTML += (item.dot.match(regex))
+                        ? `<li class="dotLi"><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent"><a href="${item.dot}">${item.dot}</a></span></li>`
+                        : `<li class="dotLi"><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent">${parseMD(item.dot)}</span></li>`;
 
                     });
                 }
-                catch { dotListHTML = `<p>항목이 없습니다.</p>` }
+                catch { dotListHTML = `<p>Nothing to show you</p><p>Put a dot to start a new board named ${table}</p>` }
 
                 response.end(htmlHeader + dotListHTML + htmlFooter);
                 return response.writeHead(200);

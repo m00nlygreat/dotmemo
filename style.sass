@@ -24,6 +24,16 @@ $darkerShadow: rgba(0,0,0,0.5)
     border:
         radius: $roundness
 
+=linkOnDot
+    margin: auto
+    width: 15px
+    height: 15px
+    top: 5px
+    display: inline-block
+    background-color: $defaultTexture
+    border-radius: 15px
+    +upRelief(1)
+
 html, body
     margin: 0px
     width: 100%
@@ -35,6 +45,10 @@ html, body
 
 ::-webkit-scrollbar
     display: none
+
+.md
+    margin: 0px
+    padding: 0px
 
 input
     -webkit-appearance: none
@@ -86,7 +100,7 @@ article
     height: 100%
     // box-sizing: border-box
 
-h1
+.title
     filter: blur(3px)
     display: inline-block
     margin-bottom: 15px
@@ -94,17 +108,19 @@ h1
     &:hover
         filter: blur(1.5px)
 
-.dot
-    margin-top: 5px
+.inlineDot
     display: inline
+    position: relative
+    top: 8px
+    left: -3px
     a
-        width: 15px
-        height: 15px
-        top: 5px
-        display: inline-block
-        background-color: $defaultTexture
-        border-radius: 15px
-        +upRelief(1)
+        +linkOnDot
+
+.dot
+    display: flex
+    a
+        +linkOnDot
+
 
 .dotContent
     padding: 0 15px
@@ -116,17 +132,10 @@ ul
     padding: 0px
     margin: 0px
 
-li
+li.dotLi
     list-style-type: none
     display: flex
     margin-bottom: 10px
-
-
-
-.offset
-    position: relative
-    top: 8px
-    left: -3px
 
 form
     .btn
