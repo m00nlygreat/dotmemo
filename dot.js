@@ -4,7 +4,7 @@ var url = require('url');
 var qs = require('querystring');
 var template = require('./header.js');
 var mysql = require('mysql2');
-var parseMD = require('./parseMD.js');
+var marked = require('marked');
 
 var db = mysql.createConnection({
     host: 'localhost',
@@ -129,7 +129,7 @@ var app = http.createServer(function (request, response) {
                         if (item.dot.match(regex)) {
                             dotListHTML += `<li class="dotLi"><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent"><a href="${item.dot}">${item.dot}</a></span></li>`;
                         } else {
-                            dotListHTML += `<li class="dotLi"><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent">${parseMD(item.dot)}</span></li>`;
+                            dotListHTML += `<li class="dotLi"><span class="dot"><a href="/empty?id=${table}&row=${item.id}">&nbsp;</a></span><span class="dotContent">${marked(item.dot)}</span></li>`;
                         }
 
                     });

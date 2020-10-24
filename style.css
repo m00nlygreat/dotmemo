@@ -12,11 +12,6 @@ html, body {
   display: none;
 }
 
-.md {
-  margin: 0px;
-  padding: 0px;
-}
-
 input {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
@@ -167,6 +162,20 @@ article {
   padding: 0 15px;
   color: #808080;
   word-break: break-all;
+}
+
+.dotContent * {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dotContent ul, li {
+  list-style-type: none;
+}
+
+.md {
+  margin: 0px;
+  padding: 0px;
 }
 
 ul {
