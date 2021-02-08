@@ -22,7 +22,7 @@
     "homepage": "https://github.com/m00nlygreat/dotmemo#readme",
     "dependencies": {
         "async": "^3.2.0",
-        "marked": "^1.2.2",
+        "marked": "^2.0.0",
         "mysql2": "^2.1.0"
     }
 }
